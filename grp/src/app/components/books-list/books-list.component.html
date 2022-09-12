@@ -1,0 +1,65 @@
+<mat-accordion style="width: 70%;">
+  <mat-expansion-panel hideToggle
+    style="width: 60%;margin-left: 20%;background-color: rgb(116, 121, 187);color: white;">
+    <mat-expansion-panel-header>
+      <mat-panel-title style="color: white;">Complaint Subject
+      </mat-panel-title>
+      <div style="text-align: right;">
+        <mat-panel-description style="font-weight: 900;color: white;">
+          Sport </mat-panel-description>
+      </div>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-accordion style="width: 70%;" class="field">
+  <mat-expansion-panel hideToggle *ngFor="let book of Books; let i = index" style="width: 60%;margin-left: 20%;">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{book.name}}
+      </mat-panel-title>
+      <div style="text-align: right;">
+        <mat-panel-description style="font-weight: 900;">
+          {{book.price}} </mat-panel-description>
+      </div>
+    </mat-expansion-panel-header>
+    <p>{{book.description}}</p> <button mat-raised-button class="btn btn-sm btn-primary"
+      routerLink="/edit-book/{{book._id}}" *ngIf="securityObject.isAuthenticated"
+      style="background-color: rgb(99, 105, 185);color:white">Edit</button>
+    <button mat-raised-button class="btn btn-sm btn-danger" (click)="delete(book._id, i)"
+      *ngIf="securityObject.canDeleteComplaint" style="background-color: rgb(99, 105, 185);color:white">Delete</button>
+
+  </mat-expansion-panel>
+
+</mat-accordion>
+<!-- 
+<div class="container">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2 class="Heading">Books List</h2>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Description</th>
+          <th class="text-center" scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of Books; let i = index">
+          <th scope="row">{{book._id}}</th>
+          <td>{{book.name}}</td>
+          <td>{{book.price}}</td>
+          <td>{{book.description}}</td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-primary" routerLink="/edit-book/{{book._id}}"
+              *ngIf="securityObject.isAuthenticated">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="delete(book._id, i)"
+              *ngIf="securityObject.canDeleteComplaint">Delete</button>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->
